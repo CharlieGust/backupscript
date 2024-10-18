@@ -1,7 +1,9 @@
 #!/bin/bash
 
 
-#SOURCE="$HOME/"
-curdate=$(date +%m-%d-%Y)
+SOURCE="$HOME/"
+DEST="challe@192.168.214.129:/home/challe/backup_challe"
+curdate="del_files_$(date +%m-%d-%Y)"
+ssh challe@192.168.214.129 "mkdir -p /home/challe/$curdate"
 
-rsync -avb --delete --backup-dir="/home/challe/rsyncdata" /home/challe/test123 /home/challe/skola2
+rsync -avb --delete --backup-dir="/home/challe/$curdate" $SOURCE $DEST
